@@ -3,7 +3,7 @@ package Application;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class NameListFormatter {
+public class App {
     public static void main(String[] args) throws Exception {
         TextFileReader fileReader = new TextFileReader();
         String path = fileReader.getFilePath();
