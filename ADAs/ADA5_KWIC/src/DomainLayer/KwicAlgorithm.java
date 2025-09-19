@@ -63,10 +63,10 @@ public class KwicAlgorithm {
             for (String word : words) {
                 newSentence += word + " ";
             }
-            if (!newSentence.equals(firstSentence)) {
-                sentences.add(newSentence);
+            if (newSentence.equals(firstSentence)) {
                 break;
             }
+            sentences.add(newSentence);
         }
         return sentences;
     }
