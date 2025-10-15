@@ -15,8 +15,8 @@ public class Main {
         pump.addFilter(new WordParser());
         pump.addFilter(new EmptyWordRemover());
         pump.addFilter(new KwicSentencesGenerator());
-        pump.addFilter(new SentenceSorter());
         pump.addFilter(new LowercaseParser());
+        pump.addFilter(new SentenceSorter());
         pump.addFilter(new TerminalPrinter());
 
         Scanner scanner = new Scanner(System.in);

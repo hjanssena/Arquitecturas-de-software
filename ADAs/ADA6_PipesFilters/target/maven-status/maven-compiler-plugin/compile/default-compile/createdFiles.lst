@@ -1,0 +1,9 @@
+com/example/pipesfilters/Filters/EmptyWordRemover.class
+com/example/pipesfilters/Filter.class
+com/example/pipesfilters/Main.class
+com/example/pipesfilters/Filters/KwicSentencesGenerator.class
+com/example/pipesfilters/Filters/TerminalPrinter.class
+com/example/pipesfilters/Pump.class
+com/example/pipesfilters/Filters/LowercaseParser.class
+com/example/pipesfilters/Filters/SentenceSorter.class
+com/example/pipesfilters/Filters/WordParser.class
