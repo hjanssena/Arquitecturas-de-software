@@ -10,19 +10,20 @@ import java.util.ArrayList;
 
 import com.example.ada7_arq.controller.CandidateListController;
 import com.example.ada7_arq.model.Candidate;
-import com.example.ada7_arq.model.Publisher;
+import com.example.ada7_arq.model.ExecutionLog;
 
 public class MainView {
 
-    private Publisher publisher;
     private CandidateListController controller;
 
-    public MainView(CandidateListController controller, Publisher publisher) {
+    public MainView(CandidateListController controller) {
         this.controller = controller;
-        this.publisher = publisher;
     }
 
     public VBox generateView(ArrayList<Candidate> candidates) {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método generateView");
+
         VBox votingPane = createVotingPane(candidates);
         HBox navigationBox = createNavPane();
 
@@ -38,10 +39,13 @@ public class MainView {
     }
 
     private VBox createVotingPane(ArrayList<Candidate> candidates) {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método createVotingPane");
+
         VBox votingVBox = new VBox(15);
         for (Candidate candidate : candidates) {
-            CandidateView candidateView = new CandidateView(candidate.getName(), controller);
-            candidateView.subscribe(publisher);
+            VotingPanel candidateView = new VotingPanel(candidate.getName(), controller);
+            candidateView.subscribe(controller);
             votingVBox.getChildren().add(candidateView.getComponentRow());
         }
 
@@ -49,18 +53,22 @@ public class MainView {
     }
 
     private HBox createNavPane() {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método createNavPane");
+
         GraphButton circleGraphButton = new GraphButton("Grafica de pastel", 200);
         GraphButton barGraphButton = new GraphButton("Grafica de barras", 200);
 
         circleGraphButton.setOnAction(e -> {
             CircleGraphView circleGraphView = new CircleGraphView();
-            publisher.addSubscriber(circleGraphView);
+            circleGraphView.subscribe(controller);
+            ;
             circleGraphView.update(controller.getCandidates());
             circleGraphView.show();
         });
         barGraphButton.setOnAction(e -> {
             BarGraphView barGraphView = new BarGraphView();
-            publisher.addSubscriber(barGraphView);
+            barGraphView.subscribe(controller);
             barGraphView.update(controller.getCandidates());
             barGraphView.show();
         });

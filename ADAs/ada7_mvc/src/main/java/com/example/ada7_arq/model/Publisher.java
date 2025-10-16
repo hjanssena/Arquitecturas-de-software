@@ -12,10 +12,16 @@ public class Publisher {
     }
 
     public void addSubscriber(Subscriber sub) {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método addSubscriber");
+
         subscribers.add(sub);
     }
 
     public void update(ArrayList<Candidate> candidateList) {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método update");
+
         for (Subscriber sub : subscribers) {
             sub.update(candidateList);
         }
