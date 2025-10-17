@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 import com.example.ada7_arq.controller.CandidateListController;
 import com.example.ada7_arq.model.Candidate;
-import com.example.ada7_arq.model.Publisher;
+import com.example.ada7_arq.model.ExecutionLog;
 
-public class CandidateView implements Subscriber {
+public class VotingPanel implements Subscriber {
     private String name;
     private int votes;
     private Label nameLabel;
@@ -19,7 +19,7 @@ public class CandidateView implements Subscriber {
 
     private CandidateListController controller;
 
-    public CandidateView(String name, CandidateListController controller) {
+    public VotingPanel(String name, CandidateListController controller) {
         this.controller = controller;
 
         this.name = name;
@@ -28,20 +28,26 @@ public class CandidateView implements Subscriber {
         this.nameLabel = new Label(name);
         this.nameLabel.getStyleClass().add("candidate-name");
 
-        this.countLabel = new Label("0 votes");
+        this.countLabel = new Label("0 votos");
         this.countLabel.getStyleClass().add("vote-count");
 
-        this.voteButton = new Button("Vote for " + name);
+        this.voteButton = new Button("Votar por " + name);
         this.voteButton.getStyleClass().add("vote-button");
 
         this.voteButton.setOnAction(e -> handleVote());
     }
 
     private void handleVote() {
-        controller.SubmitVote(name);
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método handleVote");
+
+        controller.submitVote(name);
     }
 
     public HBox getComponentRow() {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método getComponentRow");
+
         nameLabel.setPrefWidth(150);
         countLabel.setPrefWidth(100);
 
@@ -54,6 +60,9 @@ public class CandidateView implements Subscriber {
 
     @Override
     public void update(ArrayList<Candidate> candidateList) {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método update");
+
         for (Candidate candidate : candidateList) {
             if (candidate.getName().equals(name)) {
                 votes = candidate.getVotes();
@@ -63,7 +72,10 @@ public class CandidateView implements Subscriber {
     }
 
     @Override
-    public void subscribe(Publisher publisher) {
-        publisher.addSubscriber(this);
+    public void subscribe(CandidateListController controller) {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método subscribe");
+
+        controller.subscribeToCandidateList(this);
     }
 }

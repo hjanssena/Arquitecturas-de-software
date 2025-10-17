@@ -8,8 +8,9 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
+import com.example.ada7_arq.controller.CandidateListController;
 import com.example.ada7_arq.model.Candidate;
-import com.example.ada7_arq.model.Publisher;
+import com.example.ada7_arq.model.ExecutionLog;
 
 public class CircleGraphView implements Subscriber {
     private final ObservableList<PieChart.Data> pieChartData;
@@ -18,28 +19,26 @@ public class CircleGraphView implements Subscriber {
 
     public CircleGraphView() {
         this.stage = new Stage();
-        this.stage.setTitle("Circle Graph Results");
+        this.stage.setTitle("Resultados");
         this.pieChartData = FXCollections.observableArrayList();
 
         // Crear grafica de pastel
         this.pieChart = new PieChart(pieChartData);
-        pieChart.setTitle("Voting Results (Circle Graph)");
+        pieChart.setTitle("Resultados de votación");
         pieChart.setLabelsVisible(true);
         pieChart.setStartAngle(90);
 
         // Escena y estilos
         Scene scene = new Scene(pieChart, 600, 400);
-        try {
-            String cssPath = getClass().getResource("/com/example/ada7_arq/styles.css").toExternalForm();
-            scene.getStylesheets().add(cssPath);
-        } catch (Exception e) {
-            System.err.println("Could not load styles.css in CircleGraphView: " + e.getMessage());
-        }
-
+        String cssPath = getClass().getResource("/com/example/ada7_arq/styles.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
         this.stage.setScene(scene);
     }
 
     public void show() {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método show");
+
         if (stage != null) {
             stage.show();
         }
@@ -47,6 +46,9 @@ public class CircleGraphView implements Subscriber {
 
     @Override
     public void update(ArrayList<Candidate> candidateList) {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método update");
+
         pieChartData.clear(); // Limpiamos porque si no se duplican las entradas
         for (Candidate candidate : candidateList) {
             PieChart.Data data = new PieChart.Data(candidate.getName() + " (" + candidate.getVotes() + ")",
@@ -56,7 +58,10 @@ public class CircleGraphView implements Subscriber {
     }
 
     @Override
-    public void subscribe(Publisher publisher) {
-        publisher.addSubscriber(this);
+    public void subscribe(CandidateListController controller) {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método subscribe");
+
+        controller.subscribeToCandidateList(this);
     }
 }

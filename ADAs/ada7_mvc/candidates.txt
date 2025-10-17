@@ -1,3 +1,4 @@
-Pizza:12
-Sushi:13
-Tacos:14
+Pizza:48
+Sushi:21
+Tacos:23
+Burritas:22

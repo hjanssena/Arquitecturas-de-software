@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 public class CandidateDao {
     String filePath = "candidates.txt";
 
-    public void UpdateFile(ArrayList<Candidate> candidateList) {
+    public void updateFile(ArrayList<Candidate> candidateList) {
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(filePath))) {
             for (Candidate candidate : candidateList) {
                 writer.write(candidate.getName() + ":" + candidate.getVotes());
@@ -19,9 +19,15 @@ public class CandidateDao {
         } catch (IOException e) {
             System.err.println("Error writing to the file: " + e.getMessage());
         }
+
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método updateFile");
     }
 
     public ArrayList<Candidate> retrieveCandidates() {
+        // Logear ejecucion
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método retrieveCandidates");
+
         ArrayList<Candidate> candidateList = new ArrayList<Candidate>();
         try (BufferedReader reader = Files.newBufferedReader(Paths.get(filePath))) {
             String line;

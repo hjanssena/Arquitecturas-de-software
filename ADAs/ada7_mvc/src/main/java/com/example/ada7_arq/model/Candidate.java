@@ -10,14 +10,17 @@ public class Candidate {
     }
 
     public int getVotes() {
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método getVotes");
         return votes;
     }
 
     public String getName() {
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método getName");
         return name;
     }
 
     public void addVote() {
         votes++;
+        ExecutionLog.getInstance().log(this.getClass().getName(), "Invocación método addVote");
     }
 }
