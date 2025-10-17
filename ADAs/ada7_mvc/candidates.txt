@@ -1,3 +1,3 @@
-Pizza:23
-Sushi:11
-Tacos:11
+Pizza:12
+Sushi:13
+Tacos:14
