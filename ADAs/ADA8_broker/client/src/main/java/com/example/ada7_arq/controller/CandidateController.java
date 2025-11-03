@@ -24,4 +24,12 @@ public class CandidateController {
     public void subscribeToCandidateList(Subscriber subscriber) {
         candidateList.subscribeToCandidateList(subscriber);
     }
+
+    public ArrayList<String> getServices(String service) {
+        return candidateList.getServices(service);
+    }
+
+    public ArrayList<String> getEvents() {
+        return candidateList.getEvents();
+    }
 }

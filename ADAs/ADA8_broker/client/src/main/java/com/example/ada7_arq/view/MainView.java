@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 import java.util.ArrayList;
@@ -48,6 +49,8 @@ public class MainView {
     private HBox createNavPane() {
         GraphButton circleGraphButton = new GraphButton("Grafica de pastel", 200);
         GraphButton barGraphButton = new GraphButton("Grafica de barras", 200);
+        GraphButton servicesButton = new GraphButton("Servicios", 200);
+        GraphButton eventsButton = new GraphButton("Eventos", 200);
 
         circleGraphButton.setOnAction(e -> {
             CircleGraphView circleGraphView = new CircleGraphView();
@@ -62,10 +65,18 @@ public class MainView {
             barGraphView.update(controller.getCandidates());
             barGraphView.show();
         });
+        servicesButton.setOnAction(e -> {
+            ServicesView servicesView = new ServicesView(controller);
+            servicesView.start(new Stage());
+        });
+        eventsButton.setOnAction(e -> {
+            EventsView eventsView = new EventsView(controller);
+            eventsView.start(new Stage());
+        });
 
         HBox navigationBox = new HBox(20);
         navigationBox.setAlignment(Pos.CENTER);
-        navigationBox.getChildren().addAll(circleGraphButton, barGraphButton);
+        navigationBox.getChildren().addAll(circleGraphButton, barGraphButton, servicesButton, eventsButton);
 
         return navigationBox;
     }

@@ -86,7 +86,7 @@ public class RequestSender {
         while (serverResponse.has("respuesta" + i)) {
             i++;
             jsonResponse.addProperty("respuesta" + i, serverResponse.get("respuesta" + (i - 1)).getAsString());
-            jsonResponse.addProperty("valor" + i, serverResponse.get("respuesta" + (i - 1)).getAsInt());
+            jsonResponse.addProperty("valor" + i, serverResponse.get("valor" + (i - 1)).getAsString());
         }
         jsonResponse.addProperty("respuestas", i);
 

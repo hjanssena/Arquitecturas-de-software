@@ -7,3 +7,16 @@ Unix-/-evento
 2025-11-02 19:18:54-/-Se ha registrado un voto para Windows
 2025-11-02 19:18:54-/-Se ha registrado un voto para Windows
 2025-11-02 19:18:55-/-Se ha registrado un voto para MacOS
+2025-11-02 19:52:39-/-Se ha registrado un voto para MacOS
+2025-11-02 19:52:40-/-Se ha registrado un voto para Unix
+2025-11-02 20:01:59-/-Se ha registrado un voto para MacOS
+2025-11-02 20:02:00-/-Se ha registrado un voto para Windows
+2025-11-02 20:06:59-/-Se ha registrado un voto para Windows
+2025-11-02 20:07:00-/-Se ha registrado un voto para MacOS
+2025-11-02 20:07:01-/-Se ha registrado un voto para Unix
+2025-11-02 20:07:36-/-Se ha registrado un voto para Unix
+2025-11-02 20:07:37-/-Se ha registrado un voto para MacOS
+2025-11-02 20:07:39-/-Se ha registrado un voto para Windows
+2025-11-02 20:07:40-/-Se ha registrado un voto para Windows
+2025-11-02 20:07:46-/-Se ha registrado un voto para Windows
+2025-11-02 20:07:46-/-Se ha registrado un voto para Windows

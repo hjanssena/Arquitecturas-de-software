@@ -44,4 +44,14 @@ public class CandidateList {
         candidateList = connection.sendContarRequest();
         publisher.update(candidateList);
     }
+
+    public ArrayList<String> getServices(String service) {
+        ArrayList<String> services = connection.sendListarServiciosRequest(service);
+        return services;
+    }
+
+    public ArrayList<String> getEvents() {
+        ArrayList<String> events = connection.sendListarEventosRequest();
+        return events;
+    }
 }
