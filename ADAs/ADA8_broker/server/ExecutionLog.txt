@@ -1,0 +1,9 @@
+Windows-/-evento
+MacOS-/-evento
+Unix-/-evento
+2025-11-02 19:18:28-/-Se ha registrado un voto para Unix
+2025-11-02 19:18:52-/-Se ha registrado un voto para MacOS
+2025-11-02 19:18:53-/-Se ha registrado un voto para Unix
+2025-11-02 19:18:54-/-Se ha registrado un voto para Windows
+2025-11-02 19:18:54-/-Se ha registrado un voto para Windows
+2025-11-02 19:18:55-/-Se ha registrado un voto para MacOS

@@ -1,4 +1,3 @@
-Pizza:32
-Sushi:20
-Tacos:22
-Burritas:20
+Windows:41
+MacOS:22
+Unix:23
