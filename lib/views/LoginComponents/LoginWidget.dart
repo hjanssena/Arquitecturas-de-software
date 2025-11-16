@@ -36,21 +36,21 @@ class LoginWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () => {},
+                TextButton(
+                  onPressed: () => {viewModel.setRegistrationState(true)},
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Iniciar Sesión",
+                      "Nueva Cuenta",
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () => {viewModel.setRegistrationState(true)},
+                  onPressed: () => {},
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("Registrarse", style: TextStyle(fontSize: 16)),
+                    child: Text("Iniciar Sesión", style: TextStyle(fontSize: 16)),
                   ),
                 ),
               ],

@@ -42,21 +42,18 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () => {},
+                TextButton(
+                  onPressed: () => {viewModel.setRegistrationState(false)},
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Iniciar Sesión",
+                      "Regresar",
                       style: TextStyle(fontSize: 16),
                     ),
                   ),
                 ),
                 ElevatedButton(
                   onPressed: () => {viewModel.setRegistrationState(true)},
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.purple,
-                  ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text("Crear cuenta", style: TextStyle(fontSize: 16)),
