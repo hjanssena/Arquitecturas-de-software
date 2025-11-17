@@ -5,6 +5,9 @@ class TemplateListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: const EdgeInsets.only(left: 100, right: 100, top: 50),
+      child: Row(),
+    );
   }
 }

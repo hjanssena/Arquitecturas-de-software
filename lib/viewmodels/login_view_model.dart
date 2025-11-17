@@ -2,7 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class LoginViewModel extends ChangeNotifier {
-  bool _inRegistration = false;
+  bool _inRegistrationState = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
@@ -41,7 +41,7 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   bool isInRegistrationState() {
-    return _inRegistration;
+    return _inRegistrationState;
   }
 
   void setRegistrationState(bool state) {
@@ -53,7 +53,7 @@ class LoginViewModel extends ChangeNotifier {
     _passConfirmController.clear();
     _formKey.currentState!.reset();
 
-    _inRegistration = state;
+    _inRegistrationState = state;
     notifyListeners();
   }
 
