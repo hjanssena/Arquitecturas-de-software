@@ -1,4 +1,5 @@
 import 'package:dynadoc_front/routes.dart';
+import 'package:dynadoc_front/viewmodels/DashboardViewModel.dart';
 import 'package:dynadoc_front/viewmodels/LoginViewModel.dart';
 import 'package:dynadoc_front/views/Login/LoginView.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => LoginViewModel())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => LoginViewModel()),
+        ChangeNotifierProvider(create: (_) => DashboardViewModel()),
+      ],
       child: MaterialApp(
         title: 'DynaDocs',
         routes: appRoutes,
