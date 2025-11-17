@@ -12,14 +12,14 @@ class Loginview extends StatelessWidget {
     LoginViewModel viewModel = context.watch<LoginViewModel>();
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 85, 17, 136),
-      body: Padding(
-        padding: const EdgeInsets.all(50.0),
-        child: Center(
-          child: SizedBox(
-            width: 500,
-            height: 600,
-            child: Card(
-              color: Color.fromARGB(255, 255, 255, 255),
+      body: Center(
+        child: SizedBox(
+          width: 500,
+          height: 600,
+          child: Card(
+            color: Color.fromARGB(255, 255, 255, 255),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
               child: Builder(
                 builder: (BuildContext context) {
                   if (viewModel.isInRegistrationState()) {

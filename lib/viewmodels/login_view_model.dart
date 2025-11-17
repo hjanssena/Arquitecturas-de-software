@@ -45,7 +45,7 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   void setRegistrationState(bool state) {
-    //Limpiamos los campos ya que los dos formularios comparten la misma llave
+    //Se limpian los campos ya que los dos formularios comparten la misma llave
     //Con esto nos evitamos comportamiento no esperado
     _emailController.clear();
     _nameController.clear();
