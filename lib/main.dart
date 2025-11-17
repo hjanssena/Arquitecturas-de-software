@@ -1,7 +1,7 @@
 import 'package:dynadoc_front/routes.dart';
-import 'package:dynadoc_front/viewmodels/DashboardViewModel.dart';
-import 'package:dynadoc_front/viewmodels/LoginViewModel.dart';
-import 'package:dynadoc_front/views/Login/LoginView.dart';
+import 'package:dynadoc_front/viewmodels/dashboard_view_model.dart';
+import 'package:dynadoc_front/viewmodels/login_view_model.dart';
+import 'package:dynadoc_front/views/Login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

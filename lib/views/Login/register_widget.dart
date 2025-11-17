@@ -1,4 +1,4 @@
-import 'package:dynadoc_front/viewmodels/LoginViewModel.dart';
+import 'package:dynadoc_front/viewmodels/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

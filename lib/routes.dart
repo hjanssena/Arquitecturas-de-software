@@ -1,5 +1,5 @@
-import 'package:dynadoc_front/views/Dashboard/DashboardView.dart';
-import 'package:dynadoc_front/views/Login/LoginView.dart';
+import 'package:dynadoc_front/views/Dashboard/dashboard_view.dart';
+import 'package:dynadoc_front/views/Login/login_view.dart';
 
 var appRoutes = {
   '/login': (context) => const Loginview(),
