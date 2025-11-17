@@ -9,11 +9,26 @@ class LoginWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginViewModel viewModel = context.watch<LoginViewModel>();
     return Form(
+      key: viewModel.getFormKey(),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SizedBox(
+              width: 320,
+              child: Image(image: AssetImage('assets/images/logo.png')),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: TextFormField(
+              validator: (value) {
+                return viewModel.validateEmail(value)
+                    ? null
+                    : "Introduce un correo válido";
+              },
               decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 labelText: 'Correo electrónico',
@@ -23,6 +38,11 @@ class LoginWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: TextFormField(
+              validator: (value) {
+                return viewModel.validateText(value)
+                    ? null
+                    : 'Este campo es obligatorio';
+              },
               obscureText: true,
               decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
@@ -40,17 +60,29 @@ class LoginWidget extends StatelessWidget {
                   onPressed: () => {viewModel.setRegistrationState(true)},
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Nueva Cuenta",
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    child: Text("Nueva Cuenta", style: TextStyle(fontSize: 16)),
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () => {},
+                  onPressed: () {
+                    if (viewModel.login()) {
+                      Navigator.popAndPushNamed(context, '/dashboard');
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            "Error en inicio de sesión, intentelo nuevamente",
+                          ),
+                        ),
+                      );
+                    }
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("Iniciar Sesión", style: TextStyle(fontSize: 16)),
+                    child: Text(
+                      "Iniciar Sesión",
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ],

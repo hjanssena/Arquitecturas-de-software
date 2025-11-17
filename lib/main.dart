@@ -1,5 +1,6 @@
+import 'package:dynadoc_front/routes.dart';
 import 'package:dynadoc_front/viewmodels/LoginViewModel.dart';
-import 'package:dynadoc_front/views/LoginView.dart';
+import 'package:dynadoc_front/views/Login/LoginView.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       providers: [ChangeNotifierProvider(create: (_) => LoginViewModel())],
       child: MaterialApp(
         title: 'DynaDocs',
+        routes: appRoutes,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
