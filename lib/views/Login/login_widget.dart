@@ -24,6 +24,7 @@ class LoginWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: TextFormField(
+              controller: viewModel.getEmailController(),
               validator: (value) {
                 return viewModel.validateEmail(value)
                     ? null
@@ -38,6 +39,7 @@ class LoginWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: TextFormField(
+              controller: viewModel.getPasswordController(),
               validator: (value) {
                 return viewModel.validateText(value)
                     ? null
@@ -64,8 +66,9 @@ class LoginWidget extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    if (viewModel.login()) {
+                  onPressed: () async {
+                    bool success = await viewModel.login();
+                    if (success) {
                       Navigator.popAndPushNamed(context, '/dashboard');
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(

@@ -1,3 +1,4 @@
+import 'package:dynadoc_front/models/user.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
@@ -8,20 +9,30 @@ class LoginViewModel extends ChangeNotifier {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passConfirmController = TextEditingController();
+  bool _isCreatorSelected = false;
 
-  bool login() {
+  Future<bool> login() async {
     bool isFormValid = _formKey.currentState!.validate();
     if (isFormValid) {
-      return true;
+      User user = User(email: _emailController.text);
+      bool success = await user.login(_passwordController.text);
+      return success;
     }
     return false;
   }
 
-  bool createAccount() {
+  Future<bool> createAccount() async {
     bool isFormValid = _formKey.currentState!.validate();
     if (isFormValid) {
-      setRegistrationState(false);
-      return true;
+      User user = User(
+        email: _emailController.text,
+        name: _nameController.text,
+        role: _isCreatorSelected ? "CREADOR" : "USUARIO",
+      );
+
+      bool success = await user.register(_passwordController.text);
+      if (success) setRegistrationState(false);
+      return success;
     }
     return false;
   }
@@ -75,5 +86,9 @@ class LoginViewModel extends ChangeNotifier {
 
   TextEditingController getPassConfirmController() {
     return _passConfirmController;
+  }
+
+  void setIsCreatorSelected(bool isCreatorSelected) {
+    _isCreatorSelected = isCreatorSelected;
   }
 }
